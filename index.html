@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Random Simulation</title>
+	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap');
+	</style> 
+	<script>
+		run = () => {
+			document.getElementById("res").innerText = ""
+			let n = parseInt(document.getElementById("num").value);
+			let a = [0, 0, 0, 0, 0, 0]
+			for (let i = 0; i < 6; i++) {
+				if (i == 5) {
+					a[i] = n;
+					break;
+				}
+				a[i] = Math.floor(Math.random() * n);
+				n -= a[i];
+			}
+
+			let str = ""
+			for (let i = 0; i < 6; i++) {
+				str += a[i].toString() + " ";
+			}
+			document.getElementById("res").innerText = str;
+		}
+	</script>
+</head>
+<body style="margin: 0; padding: 0; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; font-family: 'Noto Sans KR', sans-serif;">
+	<h1 style="font-size: 5em;">🎲</h1>
+	<div style="display: flex; align-items: center; width: 50%; justify-content: center;">
+		<h1>사용할 정수</h1>
+		<textarea style="margin-left: 10px; height: 30px; font-size: 30px;" id="num" rows="1"></textarea>
+	</div>
+	<button id="run" style="font-size: 30px; font-family: 'Noto Sans KR', sans-serif; width: 50%; text-decoration: none; border: none; display: inline-block; background-color: gray; color: white;" onclick="run()">실행</button>
+	<h1 id="res"></h1>
+</body>
+</html>
